@@ -1,0 +1,13 @@
+string firstName = "Ivan";
+string middleName = "de Abreu Lima";
+string lastName = "Junior";
+Console.WriteLine("My first name is" + " " + firstName + ".");
+Console.WriteLine("My middle name is" + " " + middleName + ".");
+Console.WriteLine("My last name is" + " " + lastName + ".");
+Console.WriteLine(firstName + " " + middleName + " " + lastName + ".");
+Console.WriteLine("I am male.");
+Console.WriteLine("I am 29 years-old.");
+Console.WriteLine("I was born on April, 19th.");
+Console.WriteLine("I am, currently, an indie developer.");
+Console.WriteLine("My height is 1.85m.");
+Console.WriteLine("My eyes are green.");
