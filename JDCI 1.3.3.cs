@@ -1,4 +1,3 @@
-﻿
 using System;
 
 Console.WriteLine("Write a number.");
