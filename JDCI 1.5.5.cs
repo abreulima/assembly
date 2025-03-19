@@ -1,4 +1,5 @@
 string xArt = " _  _ \n" +
+string xArt = " _  _ \n" +
             "( \\/ )\n" +
             " )  ( \n" +
             "(_/\\_)\n";

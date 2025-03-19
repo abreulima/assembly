@@ -1,5 +1,6 @@
 using System;
 
+/* To remove the use of FOR */
 double HighestDivision()
 {
 

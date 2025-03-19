@@ -4,7 +4,6 @@ void Division()
 {
     Console.WriteLine("Type two numbers");
 
-
     float a = float.Parse(Console.ReadLine());
     float b = float.Parse(Console.ReadLine());
 

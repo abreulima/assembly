@@ -1,5 +1,6 @@
 using System;
 
+/* To remove the use of FOR */
 int HighestOfFour()
 {
     int max = int.MinValue;
