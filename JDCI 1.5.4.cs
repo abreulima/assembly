@@ -7,7 +7,6 @@ while (doAgain)
     int arraySize = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Now you will have to type {0} numbers...", arraySize);
 
-
     /* Where is my Malloc? */
     double[] numbers = new double[arraySize];
 

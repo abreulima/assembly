@@ -1,6 +1,6 @@
 using System;
 
-/* To remove the use of FOR */
+/* 
 int HighestOfFour()
 {
     int max = int.MinValue;
@@ -16,6 +16,32 @@ int HighestOfFour()
     return max;
 
 }
+*/
 
-int max = HighestOfFour();
+int HighestOfFour()
+{ 
+    Console.WriteLine("Type 4 numbers!");
+
+    int numA = int.Parse(Console.ReadLine());
+    int numB = int.Parse(Console.ReadLine());
+    int numC = int.Parse(Console.ReadLine());
+    int numD = int.Parse(Console.ReadLine());
+
+    int max = numA;
+
+    if (numB > max)
+    {
+        max = numB;
+    }
+    else if (numC > max)
+    {
+        max = numC;
+    }
+    else
+    {
+        max = numD
+    }
+    return max
+}
+
 Console.WriteLine("The biggest number is " + max + ".");

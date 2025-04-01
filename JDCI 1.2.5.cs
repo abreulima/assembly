@@ -10,3 +10,5 @@ void FizzBuzz()
     else
         Console.WriteLine("Buzz");
 }
+
+FizzBuzz();
