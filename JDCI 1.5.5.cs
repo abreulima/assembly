@@ -1,14 +1,17 @@
 using System;
 using System.Buffers;
 using System.Text;
+using System.Threading;
 
 class TickTacToe
 {
     char[,] board = new char[3, 3];
 
-    string? playerOne;
-    string? playerTwo;
+    string playerOne;
+    string playerTwo;
     int playerTurn = 0;
+
+
 
     private void InitializeBoard()
     {
@@ -69,6 +72,8 @@ class TickTacToe
 
         do
         {
+            Console.WriteLine();
+            Console.Write("Type position: ");
             int movePosition = Convert.ToInt32(Console.ReadLine()) - 1;
             arrayPos = TranslatePosToArray(movePosition);
         } while (!isMoveValid(arrayPos.Item1, arrayPos.Item2));
@@ -122,14 +127,123 @@ class TickTacToe
                         Console.ResetColor();
                         break;
                 }
-                Console.Write(board[i, j]);
+                Console.Write(" " + board[i, j] + " ");
+
+
             }
+            Console.ResetColor();
             Console.WriteLine();
+            Console.WriteLine("---------");
         }
     }
 
     private bool IsVictory()
     {
+
+        bool hasWinner = false;
+        char winnerPiece = ' ';
+
+        /*
+        [@][@][@]
+        [ ][ ][ ]
+        [ ][ ][ ]
+        */
+        if (board[0, 0] == board[0, 1] && board[0, 1] == board[0, 2])
+        {
+            hasWinner = true;
+            winnerPiece = board[0, 0];
+        }
+        /*
+        [ ][ ][ ]
+        [@][@][@]
+        [ ][ ][ ]
+        */
+        else if (board[1, 0] == board[1, 1] && board[1, 1] == board[1, 2])
+        {
+            hasWinner = true;
+            winnerPiece = board[1, 0];
+        }
+
+        /*
+        [ ][ ][ ]
+        [ ][ ][ ]
+        [@][@][@]
+        */
+        else if (board[2, 0] == board[2, 1] && board[2, 1] == board[2, 2])
+        {
+            hasWinner = true;
+            winnerPiece = board[2, 0];
+        }
+
+        /*
+        [@][ ][ ]
+        [@][ ][ ]
+        [@][ ][ ]
+        */
+        else if (board[0, 0] == board[1, 0] && board[1, 0] == board[2, 0])
+        {
+            hasWinner = true;
+            winnerPiece = board[0, 0];
+        }
+        /*
+        [ ][@][ ]
+        [ ][@][ ]
+        [ ][@][ ]
+        */
+        else if (board[0, 1] == board[1, 1] && board[1, 1] == board[2, 1])
+        {
+            hasWinner = true;
+            winnerPiece = board[0, 1];
+        }
+        /*
+        [ ][ ][@]
+        [ ][ ][@]
+        [ ][ ][@]
+        */
+        else if (board[0, 2] == board[1, 2] && board[1, 2] == board[2, 2])
+        {
+            hasWinner = true;
+            winnerPiece = board[0, 2];
+        }
+        /*
+        [ ][ ][@]
+        [ ][@][ ]
+        [@][ ][ ]
+        */
+        else if (board[0, 2] == board[1, 1] && board[1, 1] == board[2, 0])
+        {
+            hasWinner = true;
+            winnerPiece = board[0, 2];
+        }
+        /*
+        [@][ ][ ]
+        [ ][@][ ]
+        [ ][ ][@]
+        */
+        else if (board[0, 0] == board[1, 1] && board[1, 1] == board[2, 2])
+        {
+            hasWinner = true;
+            winnerPiece = board[0, 0];
+        }
+
+        if (hasWinner)
+        {
+            if (winnerPiece == 'x')
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Congratulations {playerTwo}");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"Congratulations {playerOne}");
+            }
+
+            Console.ResetColor();
+            return true;
+        }
+
+        Console.ResetColor();
         return false;
     }
 
@@ -140,6 +254,7 @@ class TickTacToe
             Console.WriteLine("Draw!");
             return true;
         }
+        Console.ResetColor();
         return false;
     }
 
@@ -148,7 +263,7 @@ class TickTacToe
         GetPlayers();
         InitializeBoard();
 
-        while (!IsDraw() || IsVictory())
+        while (!IsDraw() && !IsVictory())
         {
             DisplayBoard();
             MakeMoves();
@@ -157,14 +272,16 @@ class TickTacToe
     }
 }
 
+/*
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        TickTacToe game;
-        game = new TickTacToe();
-
+        TickTacToe game = new TickTacToe();
         game.Play();
-
     }
 }
+*/
+
+TickTacToe game = new TickTacToe();
+game.Play();
